@@ -1,0 +1,3 @@
+C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/tecmfs_client.dir
+C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/ZERO_CHECK.dir
