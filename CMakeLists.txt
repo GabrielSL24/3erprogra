@@ -9,6 +9,7 @@ if(MSVC)
     add_compile_definitions(_CRT_SECURE_NO_WARNINGS NOMINMAX)
 endif()
 
+find_package(OpenSSL REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
 find_package(tinyxml2 CONFIG REQUIRED)
@@ -41,6 +42,7 @@ target_link_libraries(tecmfs_client
     glfw
     OpenGL::GL
     tinyxml2::tinyxml2
+        ${OPENSSL_LIBRARIES}
 )
 
 
