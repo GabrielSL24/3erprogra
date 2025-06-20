@@ -1,17 +1,8 @@
 pip install flask para los endpoints http de disknode
 
-Servidores se prueban con:
-curl -X POST http://localhost:5001/write_block -H "Content-Type: application/json" -d "{\"block_id\": \"001\", \"data\": \"SGVsbG8gV29ybGQ=\"}"
-esperado:
-{"block_id":"001","status":"success"}
-
-curl http://localhost:5001/read_block/001
-esperado:
-{"data":"SGVsbG8gV29ybGQ","status":"success"}
-
 vcpkg install nlohmann-json
 
-Disknode.py --port=5001 --node_id=1 --path=./disk_node_1_data
-Disknode.py --port=5002 --node_id=2 --path=./disk_node_2_data
-Disknode.py --port=5003 --node_id=3 --path=./disk_node_3_data
-Disknode.py --port=5004 --node_id=4 --path=./disk_node_4_data
+python disknode.py --port 5005 --node_id 1 --path ./disk_node_1_data
+python disknode.py --port 5002 --node_id 2 --path ./disk_node_2_data
+python disknode.py --port 5003 --node_id 3 --path ./disk_node_3_data
+python disknode.py --port 5004 --node_id 4 --path ./disk_node_4_data

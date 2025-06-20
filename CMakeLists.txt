@@ -13,6 +13,7 @@ find_package(OpenSSL REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
 find_package(tinyxml2 CONFIG REQUIRED)
+find_package(tinyfiledialogs CONFIG REQUIRED)
 
 # === Cliente (GUI) ===
 add_executable(tecmfs_client
@@ -43,6 +44,7 @@ target_link_libraries(tecmfs_client
     OpenGL::GL
     tinyxml2::tinyxml2
         ${OPENSSL_LIBRARIES}
+        tinyfiledialogs::tinyfiledialogs
 )
 
 
