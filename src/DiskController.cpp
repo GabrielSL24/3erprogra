@@ -18,6 +18,7 @@ DiskController::DiskController() {
     serverThread = std::thread([this]() {
         this->startServer();
     });
+    loadMetadata();
 }
 
 void DiskController::writeToDiskNode(const std::string& node_url,
@@ -139,6 +140,15 @@ void DiskController::distributeFile(const std::string& filePath) {
             std::lock_guard<std::mutex> lockFiles(filesMutex);
             fileBlockMap[filename] = blockMapEntries;
             registeredFiles.push_back(filename);
+        }
+
+        try {
+
+        File newFile(filePath);
+        newFile.blockMap = blockMapEntries;
+        registerFile(newFile);
+        } catch (const std::exception& e) {
+            std::cerr << "Error en registerFile: " << e.what() << std::endl;
         }
 
         std::cout << "Archivo '" << filename << "' distribuido exitosamente.\n";
@@ -371,4 +381,128 @@ std::future<std::vector<DiskController::NodeStatus>> DiskController::getNodesSta
 
         return status;
     });
+}
+
+
+void DiskController::registerFile(const File& file) {
+    std::lock_guard<std::mutex> lock(filesDataMutex);
+    registeredFilesData.push_back(file);
+    saveMetadata();
+}
+
+bool DiskController::removeFile(const std::string& fileId) {
+    std::lock_guard<std::mutex> lock(filesDataMutex);
+    auto it = std::remove_if(registeredFilesData.begin(), registeredFilesData.end(),
+        [&fileId](const File& f) { return f.id == fileId; });
+    
+    if (it != registeredFilesData.end()) {
+        registeredFilesData.erase(it, registeredFilesData.end());
+        saveMetadata();
+        return true;
+    }
+    return false;
+}
+
+const std::vector<File>& DiskController::getFiles() const {
+    std::lock_guard<std::mutex> lock(filesDataMutex);
+    return registeredFilesData;
+}
+
+const File* DiskController::findFile(const std::string& fileId) const {
+    std::lock_guard<std::mutex> lock(filesDataMutex);
+    for (const auto& file : registeredFilesData) {
+        if (file.id == fileId) return &file;
+    }
+    return nullptr;
+}
+
+void DiskController::loadMetadata() {
+    std::lock_guard<std::mutex> lock(filesDataMutex);
+    std::ifstream file(dataFilePath);
+    if (file.good()) {
+        try {
+            nlohmann::json j;
+            file >> j;
+            for (const auto& item : j) {
+                File f(item);
+                registeredFilesData.push_back(f);
+
+                // --- Reconstruir estructuras ---
+                {
+                    std::lock_guard<std::mutex> lockMap(fileMapMutex);
+                    std::lock_guard<std::mutex> lockFiles(filesMutex);
+                    
+                    // 1. Agregar a registeredFiles
+                    registeredFiles.push_back(f.filename);
+                    
+                    // 2. Reconstruir fileBlockMap si hay datos
+                    if (!f.blockMap.empty()) {
+                        fileBlockMap[f.filename] = f.blockMap;
+                    }
+                }
+            }
+        } catch (...) {
+            std::cerr << "Error cargando metadatos" << std::endl;
+        }
+    }
+}
+
+void DiskController::saveMetadata() {
+    std::lock_guard<std::mutex> lock(filesDataMutex);
+    nlohmann::json j;
+    for (const auto& file : registeredFilesData) {
+        j.push_back(file.toJson());
+    }
+    std::ofstream file(dataFilePath);
+    file << j.dump(4);
+}
+
+bool DiskController::deleteFile(const std::string& fileId) {
+    // 1. Buscar el archivo en los metadatos
+    const File* file = findFile(fileId);
+    if (!file) return false;
+
+    // 2. Eliminar bloques de los nodos
+    try {
+        std::vector<std::future<bool>> deleteFutures;
+        const std::string& filename = file->filename;
+
+        if (fileBlockMap.find(filename) != fileBlockMap.end()) {
+            const auto& blocks = fileBlockMap[filename];
+            size_t totalStripes = blocks.size() / diskNodeUrls.size();
+
+            for (size_t stripeIdx = 0; stripeIdx < totalStripes; ++stripeIdx) {
+                for (int nodeIdx = 0; nodeIdx < diskNodeUrls.size(); ++nodeIdx) {
+                    bool isParity = blocks[stripeIdx * diskNodeUrls.size() + nodeIdx].second;
+                    std::string blockType = isParity ? "parity_" : "block_";
+                    std::string blockName = blockType + filename + "_stripe_" + std::to_string(stripeIdx);
+
+                    deleteFutures.push_back(std::async(std::launch::async, [this, nodeIdx, blockName]() {
+                        httplib::Client client(diskNodeUrls[nodeIdx]);
+                        auto res = client.Delete(("/delete_block/" + blockName).c_str());
+                        return res && res->status == 200;
+                    }));
+                }
+            }
+
+            // Verificar que todos los borrados fueron exitosos
+            for (auto& future : deleteFutures) {
+                if (!future.get()) return false;
+            }
+
+            // 3. Eliminar de las estructuras internas
+            {
+                std::lock_guard<std::mutex> lockMap(fileMapMutex);
+                std::lock_guard<std::mutex> lockFiles(filesMutex);
+                fileBlockMap.erase(filename);
+                registeredFiles.erase(std::remove(registeredFiles.begin(), registeredFiles.end(), filename), registeredFiles.end());
+            }
+
+            // 4. Eliminar de los metadatos
+            return removeFile(fileId);
+        }
+    } catch (...) {
+        return false;
+    }
+    return false;
 }

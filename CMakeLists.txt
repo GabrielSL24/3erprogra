@@ -13,14 +13,21 @@ find_package(OpenSSL REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
 find_package(tinyxml2 CONFIG REQUIRED)
+
 find_package(tinyfiledialogs CONFIG REQUIRED)
+if(TARGET tinyfiledialogs::tinyfiledialogs)
+    message(STATUS "tinyfiledialogs encontrado correctamente")
+else()
+    message(FATAL_ERROR "tinyfiledialogs no encontrado. Verifica la instalación con vcpkg")
+endif()
 
 # === Cliente (GUI) ===
 add_executable(tecmfs_client
     main.cpp
-    "src/DiskController.cpp"
+    src/DiskController.cpp
     src/Client.cpp
     src/InterfaceGUI.cpp
+    src/File.cpp
 
     # Archivos base de ImGui
     external/imgui/imgui.cpp
@@ -43,8 +50,8 @@ target_link_libraries(tecmfs_client
     glfw
     OpenGL::GL
     tinyxml2::tinyxml2
-        ${OPENSSL_LIBRARIES}
-        tinyfiledialogs::tinyfiledialogs
+    ${OPENSSL_LIBRARIES}
+    tinyfiledialogs::tinyfiledialogs
 )
 
 

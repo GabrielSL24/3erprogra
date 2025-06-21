@@ -1,6 +1,7 @@
 #pragma once
 #include "httplib.h"          // Servidor HTTP para comunicacion con Disk Nodes y GUI
 #include "Entity.h"           // Definiciones de entidades (ej: bloques, metadata)
+#include "File.h" 
 #include <string>
 #include <vector>
 #include <unordered_map>
@@ -9,6 +10,7 @@
 #include <openssl/bio.h> // Calculo de paridad (XOR a nivel de bytes)
 #include <openssl/evp.h>
 #include <future> // Operaciones asincronas como la reconstruccion de documentos.
+#include <fstream>
 
 class DiskController {
 public:
@@ -48,6 +50,12 @@ public:
     void startServer(); //Inicia el servidor en un hilo separado
     static void receiveXML(const httplib::Request& req, httplib::Response& res);//Recibe config XML de los Disknodes
 
+    void registerFile(const File& file);
+    bool removeFile(const std::string& fileId);
+    bool deleteFile(const std::string& fileId);
+    const std::vector<File>& getFiles() const;
+    const File* findFile(const std::string& fileId) const;
+
 private:
     int connect_S();
 
@@ -75,4 +83,11 @@ private:
 
     std::unordered_map<std::string, std::vector<std::pair<int, bool>>> fileBlockMap; // Mapa archivo->bloques
     int currentParityPosition = 0; // Para rotacion de paridad en RAID 5
+
+    std::vector<File> registeredFilesData;  // Lista de archivos
+    mutable std::mutex filesDataMutex;
+    std::string dataFilePath = "files.json";
+
+    void loadMetadata();
+    void saveMetadata();
 };
