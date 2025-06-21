@@ -391,9 +391,15 @@ std::future<std::vector<DiskController::NodeStatus>> DiskController::getNodesSta
 
 
 void DiskController::registerFile(const File& file) {
-    std::lock_guard<std::mutex> lock(filesDataMutex);
-    registeredFilesData.push_back(file);
+    // First add to the collection
+    {
+        std::lock_guard<std::mutex> lock(filesDataMutex);
+        registeredFilesData.push_back(file);
+    }  // Mutex released here
+    
+    // Then persist to disk
     saveMetadata();
+    
 }
 
 bool DiskController::removeFile(const std::string& fileId) {
@@ -423,44 +429,69 @@ const File* DiskController::findFile(const std::string& fileId) const {
 }
 
 void DiskController::loadMetadata() {
-    std::lock_guard<std::mutex> lock(filesDataMutex);
     std::ifstream file(dataFilePath);
-    if (file.good()) {
-        try {
-            nlohmann::json j;
-            file >> j;
-            for (const auto& item : j) {
-                File f(item);
-                registeredFilesData.push_back(f);
+    if (!file.is_open()) {
+        std::cout << "No existing metadata found at " << dataFilePath 
+                  << ", starting fresh." << std::endl;
+        return;
+    }
 
-                // --- Reconstruir estructuras ---
-                {
-                    std::lock_guard<std::mutex> lockMap(fileMapMutex);
-                    std::lock_guard<std::mutex> lockFiles(filesMutex);
-                    
-                    // 1. Agregar a registeredFiles
-                    registeredFiles.push_back(f.filename);
-                    
-                    // 2. Reconstruir fileBlockMap si hay datos
-                    if (!f.blockMap.empty()) {
-                        fileBlockMap[f.filename] = f.blockMap;
-                    }
-                }
-            }
-        } catch (...) {
-            std::cerr << "Error cargando metadatos" << std::endl;
+    try {
+        nlohmann::json j;
+        file >> j;
+
+        std::lock_guard<std::mutex> lockData(filesDataMutex);
+        std::lock_guard<std::mutex> lockMap(fileMapMutex);
+        std::lock_guard<std::mutex> lockFiles(filesMutex);
+
+        for (const auto& item : j) {
+            File f(item);
+            registeredFilesData.push_back(f);
+            registeredFiles.push_back(f.filename);
+            fileBlockMap[f.filename] = f.blockMap;
         }
+        
+        std::cout << "Loaded metadata from " << dataFilePath 
+                  << " (" << registeredFilesData.size() << " files)" << std::endl;
+    } catch (const std::exception& e) {
+        std::cerr << "Error loading metadata: " << e.what() << std::endl;
     }
 }
 
 void DiskController::saveMetadata() {
-    std::lock_guard<std::mutex> lock(filesDataMutex);
-    nlohmann::json j;
-    for (const auto& file : registeredFilesData) {
-        j.push_back(file.toJson());
+    // Create parent directories if they don't exist
+    try {
+        auto parent_dir = std::filesystem::path(dataFilePath).parent_path();
+        if (!parent_dir.empty() && !std::filesystem::exists(parent_dir)) {
+            std::filesystem::create_directories(parent_dir);
+        }
+    } catch (const std::exception& e) {
+        std::cerr << "Error creating directories: " << e.what() << std::endl;
+        return;
     }
+
+    // Make a thread-safe copy of the data
+    nlohmann::json j;
+    {
+        std::lock_guard<std::mutex> lock(filesDataMutex);
+        for (const auto& file : registeredFilesData) {
+            j.push_back(file.toJson());
+        }
+    }
+
+    // Write to file (outside the lock)
     std::ofstream file(dataFilePath);
+    if (!file.is_open()) {
+        std::cerr << "Failed to open " << dataFilePath 
+                  << " for writing: " << strerror(errno) << std::endl;
+        return;
+    }
+    
     file << j.dump(4);
+    file.close();
+    
+    std::cout << "Successfully saved metadata to " 
+              << std::filesystem::absolute(dataFilePath) << std::endl;
 }
 
 bool DiskController::deleteFile(const std::string& fileId) {

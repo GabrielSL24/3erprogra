@@ -6,7 +6,7 @@
 #include <vector>
 #include <string>
 #include <filesystem>
-#include <tinyfiledialogs.h>   // Para dialogos de archivo del sistema
+#include <tinyfiledialogs/tinyfiledialogs.h>   // Para dialogos de archivo del sistema
 #include <atomic>               // Para operaciones thread-safe
 #include <future>               // Para operaciones asíncronas
 #include <mutex>                // Para exclusion mutua (thread safety)

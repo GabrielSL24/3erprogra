@@ -1,0 +1,10 @@
+^C:\USERS\LUISC\DOCUMENTS\GITHUB\3ERPROGRA\BUILD\CMAKEFILES\88BEE54A0EE2AA4BB90F9EEA32B20C6B\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/luisc/Documents/GitHub/3erprogra -BC:/Users/luisc/Documents/GitHub/3erprogra/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/luisc/Documents/GitHub/3erprogra/build/TECMFS.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
