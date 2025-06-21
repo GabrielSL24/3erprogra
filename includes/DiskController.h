@@ -85,7 +85,7 @@ private:
     int currentParityPosition = 0; // Para rotacion de paridad en RAID 5
 
     std::vector<File> registeredFilesData;  // Lista de archivos
-    mutable std::mutex filesMutex;
+    mutable std::mutex filesDataMutex;
     std::string dataFilePath = "files.json";
 
     void loadMetadata();

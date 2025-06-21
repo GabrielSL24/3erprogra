@@ -145,6 +145,7 @@ void DiskController::distributeFile(const std::string& filePath) {
         try {
 
         File newFile(filePath);
+        newFile.blockMap = blockMapEntries;
         registerFile(newFile);
         } catch (const std::exception& e) {
             std::cerr << "Error en registerFile: " << e.what() << std::endl;
@@ -390,13 +391,13 @@ std::future<std::vector<DiskController::NodeStatus>> DiskController::getNodesSta
 
 
 void DiskController::registerFile(const File& file) {
-    std::lock_guard<std::mutex> lock(filesMutex);
+    std::lock_guard<std::mutex> lock(filesDataMutex);
     registeredFilesData.push_back(file);
     saveMetadata();
 }
 
 bool DiskController::removeFile(const std::string& fileId) {
-    std::lock_guard<std::mutex> lock(filesMutex);
+    std::lock_guard<std::mutex> lock(filesDataMutex);
     auto it = std::remove_if(registeredFilesData.begin(), registeredFilesData.end(),
         [&fileId](const File& f) { return f.id == fileId; });
     
@@ -409,12 +410,12 @@ bool DiskController::removeFile(const std::string& fileId) {
 }
 
 const std::vector<File>& DiskController::getFiles() const {
-    std::lock_guard<std::mutex> lock(filesMutex);
+    std::lock_guard<std::mutex> lock(filesDataMutex);
     return registeredFilesData;
 }
 
 const File* DiskController::findFile(const std::string& fileId) const {
-    std::lock_guard<std::mutex> lock(filesMutex);
+    std::lock_guard<std::mutex> lock(filesDataMutex);
     for (const auto& file : registeredFilesData) {
         if (file.id == fileId) return &file;
     }
@@ -422,23 +423,38 @@ const File* DiskController::findFile(const std::string& fileId) const {
 }
 
 void DiskController::loadMetadata() {
-    std::lock_guard<std::mutex> lock(filesMutex);
+    std::lock_guard<std::mutex> lock(filesDataMutex);
     std::ifstream file(dataFilePath);
     if (file.good()) {
         try {
             nlohmann::json j;
             file >> j;
             for (const auto& item : j) {
-                registeredFilesData.emplace_back(item);
+                File f(item);
+                registeredFilesData.push_back(f);
+
+                // --- Reconstruir estructuras ---
+                {
+                    std::lock_guard<std::mutex> lockMap(fileMapMutex);
+                    std::lock_guard<std::mutex> lockFiles(filesMutex);
+                    
+                    // 1. Agregar a registeredFiles
+                    registeredFiles.push_back(f.filename);
+                    
+                    // 2. Reconstruir fileBlockMap si hay datos
+                    if (!f.blockMap.empty()) {
+                        fileBlockMap[f.filename] = f.blockMap;
+                    }
+                }
             }
         } catch (...) {
-            std::cerr << "Error cargando metadatos de archivos" << std::endl;
+            std::cerr << "Error cargando metadatos" << std::endl;
         }
     }
 }
 
 void DiskController::saveMetadata() {
-    std::lock_guard<std::mutex> lock(filesMutex);
+    std::lock_guard<std::mutex> lock(filesDataMutex);
     nlohmann::json j;
     for (const auto& file : registeredFilesData) {
         j.push_back(file.toJson());
