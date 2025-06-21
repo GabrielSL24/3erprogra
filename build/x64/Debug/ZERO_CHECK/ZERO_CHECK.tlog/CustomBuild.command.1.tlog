@@ -1,6 +1,6 @@
-^C:\USERS\SOTOL\ONEDRIVE - ESTUDIANTES ITCR\TAREAS TEC\TERCER SEMESTRE\DATOS II\3ERPROGRA\BUILD\CMAKEFILES\642B216D34EC2F4D4B7F549C8108FB29\GENERATE.STAMP.RULE
+^C:\USERS\LUISC\DOCUMENTS\GITHUB\3ERPROGRA\BUILD\CMAKEFILES\88BEE54A0EE2AA4BB90F9EEA32B20C6B\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra" "-BC:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/TECMFS.sln"
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/luisc/Documents/GitHub/3erprogra -BC:/Users/luisc/Documents/GitHub/3erprogra/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/luisc/Documents/GitHub/3erprogra/build/TECMFS.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

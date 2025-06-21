@@ -21,6 +21,7 @@ add_executable(tecmfs_client
     "src/DiskController.cpp"
     src/Client.cpp
     src/InterfaceGUI.cpp
+    src/File.cpp
 
     # Archivos base de ImGui
     external/imgui/imgui.cpp
