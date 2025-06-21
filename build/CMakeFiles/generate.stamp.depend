@@ -18,6 +18,7 @@ C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtens
 C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/Compiler/MSVC-CXX.cmake
 C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/Compiler/MSVC.cmake
 C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/FindOpenGL.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/FindOpenSSL.cmake
 C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake
 C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/FindPackageMessage.cmake
 C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/FindThreads.cmake
@@ -28,6 +29,7 @@ C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtens
 C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/Platform/Windows-MSVC.cmake
 C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/Platform/Windows.cmake
 C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/SelectLibraryConfigurations.cmake
 C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/CMakeLists.txt
 C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/3.30.5-msvc23/CMakeCCompiler.cmake
 C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/3.30.5-msvc23/CMakeCXXCompiler.cmake
@@ -38,6 +40,10 @@ C:/vcpkg/installed/x64-windows/share/glfw3/glfw3ConfigVersion.cmake
 C:/vcpkg/installed/x64-windows/share/glfw3/glfw3Targets-debug.cmake
 C:/vcpkg/installed/x64-windows/share/glfw3/glfw3Targets-release.cmake
 C:/vcpkg/installed/x64-windows/share/glfw3/glfw3Targets.cmake
+C:/vcpkg/installed/x64-windows/share/openssl/vcpkg-cmake-wrapper.cmake
+C:/vcpkg/installed/x64-windows/share/tinyfiledialogs/tinyfiledialogsConfig-debug.cmake
+C:/vcpkg/installed/x64-windows/share/tinyfiledialogs/tinyfiledialogsConfig-release.cmake
+C:/vcpkg/installed/x64-windows/share/tinyfiledialogs/tinyfiledialogsConfig.cmake
 C:/vcpkg/installed/x64-windows/share/tinyxml2/tinyxml2-config-version.cmake
 C:/vcpkg/installed/x64-windows/share/tinyxml2/tinyxml2-config.cmake
 C:/vcpkg/installed/x64-windows/share/tinyxml2/tinyxml2-shared-targets-debug.cmake

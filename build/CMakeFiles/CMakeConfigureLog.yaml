@@ -24,7 +24,7 @@ events:
       The output was:
       0
       MSBuild version 17.13.9+e0f243f1e for .NET Framework
-      Build started 6/14/2025 9:21:22 PM.
+      Build started 6/18/2025 2:29:21 PM.
       
       Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\3.30.5-msvc23\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -88,7 +88,7 @@ events:
       The output was:
       0
       MSBuild version 17.13.9+e0f243f1e for .NET Framework
-      Build started 6/14/2025 9:21:27 PM.
+      Build started 6/18/2025 2:29:26 PM.
       
       Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\3.30.5-msvc23\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -126,7 +126,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:03.74
+      Time Elapsed 00:00:02.27
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -145,8 +145,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-v7bzyu"
-      binary: "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-v7bzyu"
+      source: "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-500o84"
+      binary: "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-500o84"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -159,40 +159,40 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-v7bzyu'
+        Change Dir: 'C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-500o84'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_aec12.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_bedcb.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.13.9+e0f243f1e for .NET Framework
-        Build started 6/14/2025 9:21:32 PM.
+        Build started 6/18/2025 2:29:29 PM.
         
-        Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-v7bzyu\\cmTC_aec12.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-500o84\\cmTC_bedcb.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_aec12.dir\\Debug\\".
+          Creating directory "cmTC_bedcb.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-v7bzyu\\Debug\\".
-          Creating directory "cmTC_aec12.dir\\Debug\\cmTC_aec12.tlog\\".
+          Creating directory "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-500o84\\Debug\\".
+          Creating directory "cmTC_bedcb.dir\\Debug\\cmTC_bedcb.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_aec12.dir\\Debug\\cmTC_aec12.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_aec12.dir\\Debug\\cmTC_aec12.tlog\\unsuccessfulbuild".
+          Creating "cmTC_bedcb.dir\\Debug\\cmTC_bedcb.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_bedcb.dir\\Debug\\cmTC_bedcb.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_aec12.dir\\Debug\\\\" /Fd"cmTC_aec12.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_bedcb.dir\\Debug\\\\" /Fd"cmTC_bedcb.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.43.34808 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_aec12.dir\\Debug\\\\" /Fd"cmTC_aec12.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_bedcb.dir\\Debug\\\\" /Fd"cmTC_bedcb.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-v7bzyu\\Debug\\cmTC_aec12.exe" /INCREMENTAL /ILK:"cmTC_aec12.dir\\Debug\\cmTC_aec12.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-v7bzyu/Debug/cmTC_aec12.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-v7bzyu/Debug/cmTC_aec12.lib" /MACHINE:X64  /machine:x64 cmTC_aec12.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_aec12.vcxproj -> C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-v7bzyu\\Debug\\cmTC_aec12.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-500o84\\Debug\\cmTC_bedcb.exe" /INCREMENTAL /ILK:"cmTC_bedcb.dir\\Debug\\cmTC_bedcb.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-500o84/Debug/cmTC_bedcb.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-500o84/Debug/cmTC_bedcb.lib" /MACHINE:X64  /machine:x64 cmTC_bedcb.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_bedcb.vcxproj -> C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-500o84\\Debug\\cmTC_bedcb.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_aec12.dir\\Debug\\cmTC_aec12.tlog\\unsuccessfulbuild".
-          Touching "cmTC_aec12.dir\\Debug\\cmTC_aec12.tlog\\cmTC_aec12.lastbuildstate".
-        Done Building Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-v7bzyu\\cmTC_aec12.vcxproj" (default targets).
+          Deleting file "cmTC_bedcb.dir\\Debug\\cmTC_bedcb.tlog\\unsuccessfulbuild".
+          Touching "cmTC_bedcb.dir\\Debug\\cmTC_bedcb.tlog\\cmTC_bedcb.lastbuildstate".
+        Done Building Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-500o84\\cmTC_bedcb.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:01.06
+        Time Elapsed 00:00:01.13
         
       exitCode: 0
   -
@@ -232,8 +232,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-2n0zfm"
-      binary: "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-2n0zfm"
+      source: "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-48axuy"
+      binary: "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-48axuy"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -247,40 +247,40 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-2n0zfm'
+        Change Dir: 'C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-48axuy'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_6162a.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_a439a.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.13.9+e0f243f1e for .NET Framework
-        Build started 6/14/2025 9:21:34 PM.
+        Build started 6/18/2025 2:29:31 PM.
         
-        Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2n0zfm\\cmTC_6162a.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-48axuy\\cmTC_a439a.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_6162a.dir\\Debug\\".
+          Creating directory "cmTC_a439a.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2n0zfm\\Debug\\".
-          Creating directory "cmTC_6162a.dir\\Debug\\cmTC_6162a.tlog\\".
+          Creating directory "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-48axuy\\Debug\\".
+          Creating directory "cmTC_a439a.dir\\Debug\\cmTC_a439a.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_6162a.dir\\Debug\\cmTC_6162a.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_6162a.dir\\Debug\\cmTC_6162a.tlog\\unsuccessfulbuild".
+          Creating "cmTC_a439a.dir\\Debug\\cmTC_a439a.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_a439a.dir\\Debug\\cmTC_a439a.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_6162a.dir\\Debug\\\\" /Fd"cmTC_6162a.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_a439a.dir\\Debug\\\\" /Fd"cmTC_a439a.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.43.34808 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_6162a.dir\\Debug\\\\" /Fd"cmTC_6162a.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_a439a.dir\\Debug\\\\" /Fd"cmTC_a439a.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2n0zfm\\Debug\\cmTC_6162a.exe" /INCREMENTAL /ILK:"cmTC_6162a.dir\\Debug\\cmTC_6162a.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-2n0zfm/Debug/cmTC_6162a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-2n0zfm/Debug/cmTC_6162a.lib" /MACHINE:X64  /machine:x64 cmTC_6162a.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_6162a.vcxproj -> C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2n0zfm\\Debug\\cmTC_6162a.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-48axuy\\Debug\\cmTC_a439a.exe" /INCREMENTAL /ILK:"cmTC_a439a.dir\\Debug\\cmTC_a439a.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-48axuy/Debug/cmTC_a439a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-48axuy/Debug/cmTC_a439a.lib" /MACHINE:X64  /machine:x64 cmTC_a439a.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_a439a.vcxproj -> C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-48axuy\\Debug\\cmTC_a439a.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_6162a.dir\\Debug\\cmTC_6162a.tlog\\unsuccessfulbuild".
-          Touching "cmTC_6162a.dir\\Debug\\cmTC_6162a.tlog\\cmTC_6162a.lastbuildstate".
-        Done Building Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-2n0zfm\\cmTC_6162a.vcxproj" (default targets).
+          Deleting file "cmTC_a439a.dir\\Debug\\cmTC_a439a.tlog\\unsuccessfulbuild".
+          Touching "cmTC_a439a.dir\\Debug\\cmTC_a439a.tlog\\cmTC_a439a.lastbuildstate".
+        Done Building Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-48axuy\\cmTC_a439a.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:01.44
+        Time Elapsed 00:00:01.11
         
       exitCode: 0
   -
@@ -322,12 +322,12 @@ events:
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
       - "C:/vcpkg/installed/x64-windows/share/glfw3/glfw3Config.cmake:2 (find_dependency)"
       - "C:/vcpkg/scripts/buildsystems/vcpkg.cmake:893 (_find_package)"
-      - "CMakeLists.txt:13 (find_package)"
+      - "CMakeLists.txt:14 (find_package)"
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-nlbb9o"
-      binary: "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-nlbb9o"
+      source: "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-npuzgl"
+      binary: "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-npuzgl"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -340,40 +340,40 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-nlbb9o'
+        Change Dir: 'C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-npuzgl'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_ba5f2.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_993c8.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.13.9+e0f243f1e for .NET Framework
-        Build started 6/14/2025 9:21:36 PM.
+        Build started 6/18/2025 2:29:33 PM.
         
-        Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nlbb9o\\cmTC_ba5f2.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-npuzgl\\cmTC_993c8.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_ba5f2.dir\\Debug\\".
+          Creating directory "cmTC_993c8.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nlbb9o\\Debug\\".
-          Creating directory "cmTC_ba5f2.dir\\Debug\\cmTC_ba5f2.tlog\\".
+          Creating directory "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-npuzgl\\Debug\\".
+          Creating directory "cmTC_993c8.dir\\Debug\\cmTC_993c8.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_ba5f2.dir\\Debug\\cmTC_ba5f2.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_ba5f2.dir\\Debug\\cmTC_ba5f2.tlog\\unsuccessfulbuild".
+          Creating "cmTC_993c8.dir\\Debug\\cmTC_993c8.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_993c8.dir\\Debug\\cmTC_993c8.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ba5f2.dir\\Debug\\\\" /Fd"cmTC_ba5f2.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nlbb9o\\src.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_993c8.dir\\Debug\\\\" /Fd"cmTC_993c8.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-npuzgl\\src.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.43.34808 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ba5f2.dir\\Debug\\\\" /Fd"cmTC_ba5f2.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nlbb9o\\src.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_993c8.dir\\Debug\\\\" /Fd"cmTC_993c8.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-npuzgl\\src.c"
           src.c
-        C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nlbb9o\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nlbb9o\\cmTC_ba5f2.vcxproj]
-        Done Building Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nlbb9o\\cmTC_ba5f2.vcxproj" (default targets) -- FAILED.
+        C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-npuzgl\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-npuzgl\\cmTC_993c8.vcxproj]
+        Done Building Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-npuzgl\\cmTC_993c8.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nlbb9o\\cmTC_ba5f2.vcxproj" (default target) (1) ->
+        "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-npuzgl\\cmTC_993c8.vcxproj" (default target) (1) ->
         (ClCompile target) -> 
-          C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nlbb9o\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nlbb9o\\cmTC_ba5f2.vcxproj]
+          C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-npuzgl\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-npuzgl\\cmTC_993c8.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.90
+        Time Elapsed 00:00:00.73
         
       exitCode: 1
   -
@@ -386,12 +386,12 @@ events:
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
       - "C:/vcpkg/installed/x64-windows/share/glfw3/glfw3Config.cmake:2 (find_dependency)"
       - "C:/vcpkg/scripts/buildsystems/vcpkg.cmake:893 (_find_package)"
-      - "CMakeLists.txt:13 (find_package)"
+      - "CMakeLists.txt:14 (find_package)"
     checks:
       - "Looking for pthread_create in pthreads"
     directories:
-      source: "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-o04swz"
-      binary: "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-o04swz"
+      source: "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-fqa4b6"
+      binary: "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-fqa4b6"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -404,42 +404,42 @@ events:
       variable: "CMAKE_HAVE_PTHREADS_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-o04swz'
+        Change Dir: 'C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-fqa4b6'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_7ad29.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_bc55a.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.13.9+e0f243f1e for .NET Framework
-        Build started 6/14/2025 9:21:38 PM.
+        Build started 6/18/2025 2:29:34 PM.
         
-        Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-o04swz\\cmTC_7ad29.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fqa4b6\\cmTC_bc55a.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_7ad29.dir\\Debug\\".
+          Creating directory "cmTC_bc55a.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-o04swz\\Debug\\".
-          Creating directory "cmTC_7ad29.dir\\Debug\\cmTC_7ad29.tlog\\".
+          Creating directory "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fqa4b6\\Debug\\".
+          Creating directory "cmTC_bc55a.dir\\Debug\\cmTC_bc55a.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_7ad29.dir\\Debug\\cmTC_7ad29.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_7ad29.dir\\Debug\\cmTC_7ad29.tlog\\unsuccessfulbuild".
+          Creating "cmTC_bc55a.dir\\Debug\\cmTC_bc55a.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_bc55a.dir\\Debug\\cmTC_bc55a.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_7ad29.dir\\Debug\\\\" /Fd"cmTC_7ad29.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-o04swz\\CheckFunctionExists.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_bc55a.dir\\Debug\\\\" /Fd"cmTC_bc55a.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fqa4b6\\CheckFunctionExists.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.43.34808 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_7ad29.dir\\Debug\\\\" /Fd"cmTC_7ad29.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-o04swz\\CheckFunctionExists.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_bc55a.dir\\Debug\\\\" /Fd"cmTC_bc55a.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fqa4b6\\CheckFunctionExists.c"
           CheckFunctionExists.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-o04swz\\Debug\\cmTC_7ad29.exe" /INCREMENTAL /ILK:"cmTC_7ad29.dir\\Debug\\cmTC_7ad29.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-o04swz/Debug/cmTC_7ad29.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-o04swz/Debug/cmTC_7ad29.lib" /MACHINE:X64  /machine:x64 cmTC_7ad29.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-o04swz\\cmTC_7ad29.vcxproj]
-        Done Building Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-o04swz\\cmTC_7ad29.vcxproj" (default targets) -- FAILED.
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fqa4b6\\Debug\\cmTC_bc55a.exe" /INCREMENTAL /ILK:"cmTC_bc55a.dir\\Debug\\cmTC_bc55a.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-fqa4b6/Debug/cmTC_bc55a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-fqa4b6/Debug/cmTC_bc55a.lib" /MACHINE:X64  /machine:x64 cmTC_bc55a.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fqa4b6\\cmTC_bc55a.vcxproj]
+        Done Building Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fqa4b6\\cmTC_bc55a.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-o04swz\\cmTC_7ad29.vcxproj" (default target) (1) ->
+        "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fqa4b6\\cmTC_bc55a.vcxproj" (default target) (1) ->
         (Link target) -> 
-          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-o04swz\\cmTC_7ad29.vcxproj]
+          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fqa4b6\\cmTC_bc55a.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.82
+        Time Elapsed 00:00:00.91
         
       exitCode: 1
   -
@@ -452,12 +452,12 @@ events:
       - "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
       - "C:/vcpkg/installed/x64-windows/share/glfw3/glfw3Config.cmake:2 (find_dependency)"
       - "C:/vcpkg/scripts/buildsystems/vcpkg.cmake:893 (_find_package)"
-      - "CMakeLists.txt:13 (find_package)"
+      - "CMakeLists.txt:14 (find_package)"
     checks:
       - "Looking for pthread_create in pthread"
     directories:
-      source: "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-8fp9tz"
-      binary: "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-8fp9tz"
+      source: "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-x1lz1r"
+      binary: "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-x1lz1r"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -470,42 +470,42 @@ events:
       variable: "CMAKE_HAVE_PTHREAD_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-8fp9tz'
+        Change Dir: 'C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-x1lz1r'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_45fee.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_bdd2a.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.13.9+e0f243f1e for .NET Framework
-        Build started 6/14/2025 9:21:39 PM.
+        Build started 6/18/2025 2:29:36 PM.
         
-        Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8fp9tz\\cmTC_45fee.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-x1lz1r\\cmTC_bdd2a.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_45fee.dir\\Debug\\".
+          Creating directory "cmTC_bdd2a.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8fp9tz\\Debug\\".
-          Creating directory "cmTC_45fee.dir\\Debug\\cmTC_45fee.tlog\\".
+          Creating directory "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-x1lz1r\\Debug\\".
+          Creating directory "cmTC_bdd2a.dir\\Debug\\cmTC_bdd2a.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_45fee.dir\\Debug\\cmTC_45fee.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_45fee.dir\\Debug\\cmTC_45fee.tlog\\unsuccessfulbuild".
+          Creating "cmTC_bdd2a.dir\\Debug\\cmTC_bdd2a.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_bdd2a.dir\\Debug\\cmTC_bdd2a.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_45fee.dir\\Debug\\\\" /Fd"cmTC_45fee.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8fp9tz\\CheckFunctionExists.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_bdd2a.dir\\Debug\\\\" /Fd"cmTC_bdd2a.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-x1lz1r\\CheckFunctionExists.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.43.34808 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_45fee.dir\\Debug\\\\" /Fd"cmTC_45fee.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8fp9tz\\CheckFunctionExists.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_bdd2a.dir\\Debug\\\\" /Fd"cmTC_bdd2a.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-x1lz1r\\CheckFunctionExists.c"
           CheckFunctionExists.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8fp9tz\\Debug\\cmTC_45fee.exe" /INCREMENTAL /ILK:"cmTC_45fee.dir\\Debug\\cmTC_45fee.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-8fp9tz/Debug/cmTC_45fee.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-8fp9tz/Debug/cmTC_45fee.lib" /MACHINE:X64  /machine:x64 cmTC_45fee.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8fp9tz\\cmTC_45fee.vcxproj]
-        Done Building Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8fp9tz\\cmTC_45fee.vcxproj" (default targets) -- FAILED.
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-x1lz1r\\Debug\\cmTC_bdd2a.exe" /INCREMENTAL /ILK:"cmTC_bdd2a.dir\\Debug\\cmTC_bdd2a.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-x1lz1r/Debug/cmTC_bdd2a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/CMakeScratch/TryCompile-x1lz1r/Debug/cmTC_bdd2a.lib" /MACHINE:X64  /machine:x64 cmTC_bdd2a.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-x1lz1r\\cmTC_bdd2a.vcxproj]
+        Done Building Project "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-x1lz1r\\cmTC_bdd2a.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8fp9tz\\cmTC_45fee.vcxproj" (default target) (1) ->
+        "C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-x1lz1r\\cmTC_bdd2a.vcxproj" (default target) (1) ->
         (Link target) -> 
-          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8fp9tz\\cmTC_45fee.vcxproj]
+          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\sotol\\OneDrive - Estudiantes ITCR\\Tareas TEC\\Tercer semestre\\Datos II\\3erprogra\\build\\CMakeFiles\\CMakeScratch\\TryCompile-x1lz1r\\cmTC_bdd2a.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:01.30
+        Time Elapsed 00:00:00.79
         
       exitCode: 1
 ...

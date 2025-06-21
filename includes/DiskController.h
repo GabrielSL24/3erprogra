@@ -67,10 +67,10 @@ private:
 
     std::vector<std::string> registeredFiles;    // Archivos almacenados
     std::vector<std::string> diskNodeUrls = {    // URLs de los nodos
-        "http://localhost:5005",
-        "http://localhost:5002",
-        "http://localhost:5003",
-        "http://localhost:5004"
+        "http://127.0.0.1:5001",
+        "http://127.0.0.1:5002",
+        "http://127.0.0.1:5003",
+        "http://127.0.0.1:5004"
     };
 
     std::unordered_map<std::string, std::vector<std::pair<int, bool>>> fileBlockMap; // Mapa archivo->bloques

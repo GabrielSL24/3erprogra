@@ -335,25 +335,32 @@ std::future<std::vector<DiskController::NodeStatus>> DiskController::getNodesSta
         for (size_t i = 0; i < diskNodeUrls.size(); i++) {
             futures.emplace_back(std::async(std::launch::async, [this, i]() {
                 httplib::Client client(diskNodeUrls[i]);
-                client.set_connection_timeout(1); // 1 segundo es suficiente para LAN
-                client.set_read_timeout(1);
+                client.set_connection_timeout(4); // 1 segundo es suficiente para LAN
+                client.set_read_timeout(4);
 
                 try {
                     auto res = client.Get("/status");
+
                     if (res && res->status == 200) {
+                        //std::cerr << "[DEBUG] Nodo " << i << ": respuesta -> " << res->body << "\n";
+
                         auto json = nlohmann::json::parse(res->body);
                         return NodeStatus{
-                            json.value("node_id", static_cast<int>(i+1)),
-                            json.value("port", 5000 + static_cast<int>(i+1)),
-                            json.value("used_blocks", 0),
-                            json.value("total_blocks", 0),
-                            true
+                        json.value("node_id", static_cast<int>(i + 1)),
+                        json.value("port", json.value("port", 5000 + static_cast<int>(i + 1))),
+                        json.value("used_blocks", 0),
+                        json.value("total_blocks", 0),
+                        true
                         };
                     }
+                    /*else {
+                        std::cerr << "[ERROR] Nodo " << i << " no respondió o status != 200\n";
+                    }*/
                 } catch (...) {
                     // Ignora errores, retorna estado por defecto
+                    //std::cerr << "Error al obtener estado del nodo " << i << ": " << e.what() << "\n";
                 }
-
+                
                 return NodeStatus{
                     static_cast<int>(i+1),
                     5000 + static_cast<int>(i+1),
