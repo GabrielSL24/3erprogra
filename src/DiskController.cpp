@@ -168,13 +168,13 @@ std::vector<char> DiskController::retrieveFile(const std::string& filename) {
             auto res = client.Get(("/read_block/" + blockName).c_str());
 
             if (res && res->status == 200) {
-                auto json = nlohmann::json::parse(res->body);
+                    auto json = nlohmann::json::parse(res->body);
                 blocks.push_back(base64_decode(json["data"]));
                 nodeIndices.push_back(nodeIdx);
             } else {
                 missingNode = nodeIdx;
-            }
-        }
+                }
+                }
 
         //Reconstruccion correcta (considera paridad)
         std::vector<char> stripeData;
@@ -342,8 +342,6 @@ std::future<std::vector<DiskController::NodeStatus>> DiskController::getNodesSta
                     auto res = client.Get("/status");
 
                     if (res && res->status == 200) {
-                        //std::cerr << "[DEBUG] Nodo " << i << ": respuesta -> " << res->body << "\n";
-
                         auto json = nlohmann::json::parse(res->body);
                         return NodeStatus{
                         json.value("node_id", static_cast<int>(i + 1)),
@@ -353,12 +351,8 @@ std::future<std::vector<DiskController::NodeStatus>> DiskController::getNodesSta
                         true
                         };
                     }
-                    /*else {
-                        std::cerr << "[ERROR] Nodo " << i << " no respondió o status != 200\n";
-                    }*/
                 } catch (...) {
                     // Ignora errores, retorna estado por defecto
-                    //std::cerr << "Error al obtener estado del nodo " << i << ": " << e.what() << "\n";
                 }
                 
                 return NodeStatus{

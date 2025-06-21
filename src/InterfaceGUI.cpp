@@ -264,14 +264,21 @@ void InterfaceGui::displayNodeStatus() {
         } catch (...) {
             lastStatus.clear();
         }
-    }
+        }
 
     if (!lastStatus.empty()) {
         for (const auto& node : lastStatus) {
             ImGui::Text("Nodo %d:", node.nodeId);
             ImGui::Text("- Puerto: %d", node.port);
             ImGui::Text("- Bloques: %d/%d", node.usedBlocks, node.totalBlocks);
-            ImGui::Text("- Estado: %s", node.isActive ? "Activo" : "Inactivo");
+
+            // Estado con color
+            if (node.isActive) {
+                ImGui::TextColored(ImVec4(0, 1, 0, 1), "- Estado: Activo");
+            }
+            else {
+                ImGui::TextColored(ImVec4(1, 0, 0, 1), "- Estado: Inactivo");
+            }
 
             float progress = node.totalBlocks > 0 ?
                 static_cast<float>(node.usedBlocks) / node.totalBlocks : 0.0f;
