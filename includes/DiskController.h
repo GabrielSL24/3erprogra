@@ -30,8 +30,9 @@ public:
     );
 
     //Reconstruye un bloque faltante usando XOR.
-    std::vector<char> reconstructMissingBlock(const std::vector<std::vector<char>>& availableBlocks,
-                                            int missingNodeIndex);
+    std::vector<char> reconstructMissingBlock(const std::vector<std::pair<std::vector<char>, bool>>& availableBlocksInfo,
+                                            int missingNodeIndex,
+                                            size_t stripeIndex);
     //Lista los archivos registrados en el RAID, Api para GUI
     std::vector<char> reconstructFromParity(const std::vector<std::vector<char>>& blocks,
                                            int missingIndex);

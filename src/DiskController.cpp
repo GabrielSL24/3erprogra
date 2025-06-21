@@ -46,25 +46,25 @@ void DiskController::writeToDiskNode(const std::string& node_url,
             auto res = client.Post("/write_block", request.dump(), "application/json");
 
             if (res && res->status == 200) {
-                success = true;
+                        success = true;
             } else {
                 std::cerr << "Intento " << retry_count + 1 << " fallido con nodo "
                           << node_url << ". Error: "
                           << (res ? res->status : -1) << std::endl;
                 retry_count++;
                 std::this_thread::sleep_for(std::chrono::seconds(1));
-            }
+                    }
         } catch (const std::exception& e) {
             std::cerr << "Excepcion al escribir en nodo " << node_url
                       << ": " << e.what() << std::endl;
             retry_count++;
             std::this_thread::sleep_for(std::chrono::seconds(1));
-        }
-    }
+                }
+                }
 
     if (!success) {
         throw std::runtime_error("No se pudo escribir en el nodo despues de " +
-                               std::to_string(max_retries) + " intentos: " + node_url);
+            std::to_string(max_retries) + " intentos: " + node_url);
     }
 }
 
@@ -161,47 +161,74 @@ void DiskController::distributeFile(const std::string& filePath) {
 
 std::vector<char> DiskController::retrieveFile(const std::string& filename) {
     std::vector<char> fullFile;
+    std::lock_guard<std::mutex> lock(fileMapMutex);
+
+    if (fileBlockMap.find(filename) == fileBlockMap.end()) {
+        throw std::runtime_error("Archivo no encontrado en los metadatos");
+    }
+
     size_t totalStripes = fileBlockMap[filename].size() / diskNodeUrls.size();
 
     for (size_t stripeIdx = 0; stripeIdx < totalStripes; ++stripeIdx) {
-        std::vector<std::vector<char>> blocks;
-        std::vector<int> nodeIndices;
+        std::vector<std::pair<std::vector<char>, bool>> blocksWithInfo; // Almacena bloque + si es paridad
         int missingNode = -1;
 
-        //Recupera todos los bloques (datos + paridad)
+        // Recuperar bloques con su información de paridad
         for (int nodeIdx = 0; nodeIdx < diskNodeUrls.size(); ++nodeIdx) {
             bool isParity = fileBlockMap[filename][stripeIdx * diskNodeUrls.size() + nodeIdx].second;
             std::string blockType = isParity ? "parity_" : "block_";
             std::string blockName = blockType + filename + "_stripe_" + std::to_string(stripeIdx);
 
-            httplib::Client client(diskNodeUrls[nodeIdx]);
-            auto res = client.Get(("/read_block/" + blockName).c_str());
+            try {
+                httplib::Client client(diskNodeUrls[nodeIdx]);
+                auto res = client.Get(("/read_block/" + blockName).c_str());
 
-            if (res && res->status == 200) {
+                if (res && res->status == 200) {
                     auto json = nlohmann::json::parse(res->body);
-                blocks.push_back(base64_decode(json["data"]));
-                nodeIndices.push_back(nodeIdx);
-            } else {
-                missingNode = nodeIdx;
-                }
-                }
-
-        //Reconstruccion correcta (considera paridad)
-        std::vector<char> stripeData;
-        if (blocks.size() >= diskNodeUrls.size() - 1) { // Al menos 3 bloques (2 datos + 1 paridad)
-            if (missingNode != -1) {
-                stripeData = reconstructMissingBlock(blocks, missingNode);
-            } else {
-                //Selecciona solo los bloques de datos (excluir paridad)
-                for (size_t i = 0; i < blocks.size(); ++i) {
-                    if (!fileBlockMap[filename][stripeIdx * diskNodeUrls.size() + nodeIndices[i]].second) {
-                        stripeData = blocks[i];
-                        break;
+                    if (!json["data"].is_null() && !json["data"].empty()) {
+                        blocksWithInfo.emplace_back(base64_decode(json["data"]), isParity);
+                        continue;
                     }
                 }
             }
-        } else {
-            throw std::runtime_error("Bloques insuficientes para stripe " + std::to_string(stripeIdx));
+            catch (...) {
+                // Error al conectar con el nodo
+            }
+
+            // Si llegamos aquí, el bloque falta
+            if (missingNode == -1) {
+                missingNode = nodeIdx;
+            }
+            else {
+                // Segundo bloque faltante - no podemos reconstruir
+                throw std::runtime_error("Demasiados bloques faltantes para stripe " +
+                    std::to_string(stripeIdx));
+            }
+        }
+
+        std::vector<char> stripeData;
+        if (missingNode != -1) {
+            std::cout << "Debug - Bloques disponibles para stripe " << stripeIdx << ":\n";
+            for (const auto& blockInfo : blocksWithInfo) {
+                std::cout << "- Tipo: " << (blockInfo.second ? "PARIDAD" : "DATOS")
+                    << ", Tamaño: " << blockInfo.first.size() << " bytes\n";
+            }
+
+            stripeData = reconstructMissingBlock(blocksWithInfo, missingNode, stripeIdx);
+        }
+        else {
+            // Buscar cualquier bloque de datos (no paridad)
+            for (const auto& blockInfo : blocksWithInfo) {
+                if (!blockInfo.second) {
+                    stripeData = blockInfo.first;
+                    break;
+                }
+            }
+        }
+
+        if (stripeData.empty()) {
+            throw std::runtime_error("No se pudo obtener datos para stripe " +
+                std::to_string(stripeIdx));
         }
 
         fullFile.insert(fullFile.end(), stripeData.begin(), stripeData.end());
@@ -211,23 +238,73 @@ std::vector<char> DiskController::retrieveFile(const std::string& filename) {
 }
 
 std::vector<char> DiskController::reconstructMissingBlock(
-    const std::vector<std::vector<char>>& availableBlocks,
-    int missingNodeIndex)
+    const std::vector<std::pair<std::vector<char>, bool>>& availableBlocksInfo,
+    int missingNodeIndex,
+    size_t stripeIndex)
 {
-    if (availableBlocks.size() != diskNodeUrls.size() - 1) {
-        throw std::runtime_error("Se requieren " +
-                               std::to_string(diskNodeUrls.size() - 1) +
-                               " bloques para reconstruccion");
+    // 1. Filtrar bloques vacios o corruptos
+    std::vector<std::pair<std::vector<char>, bool>> validBlocks;
+    for (const auto& blockInfo : availableBlocksInfo) {
+        if (!blockInfo.first.empty() && blockInfo.first.size() == 4096) {
+            validBlocks.push_back(blockInfo);
+        }
     }
 
-    if (missingNodeIndex < 0 || missingNodeIndex >= static_cast<int>(diskNodeUrls.size())) {
-        throw std::runtime_error("Indice de nodo faltante invalido");
+    // 2. Verificar que tenemos suficientes bloques
+    if (validBlocks.size() < diskNodeUrls.size() - 1) {
+        throw std::runtime_error("Bloques válidos insuficientes para reconstrucción");
     }
 
-    std::vector<char> reconstructed(availableBlocks[0].size());
-    for (const auto& block : availableBlocks) {
-        for (size_t i = 0; i < block.size(); ++i) {
-            reconstructed[i] ^= block[i];
+    // 3. Obtener tamaño de bloque esperado (del primer bloque disponible)
+    size_t blockSize = 0;
+
+    // 4. Verificar consistencia de tamaños
+    for (const auto& blockInfo : availableBlocksInfo) {
+        if (blockInfo.first.size() >= 4096) { //Tamaño minimo esperado
+            blockSize = blockInfo.first.size();
+            break;
+        }
+    }
+
+    if (blockSize == 0) {
+        throw std::runtime_error("No se encontraron bloques validos para determinar el tamano");
+    }
+
+    // 5. Calcula posición de paridad
+    size_t parityPos = stripeIndex % diskNodeUrls.size();
+
+    // 6. Reconstrucción
+    std::vector<char> reconstructed(blockSize, 0);
+
+    if (static_cast<size_t>(missingNodeIndex) == parityPos) {
+        // Caso 1: Falta el bloque de paridad - usar solo bloques de datos
+        for (const auto& blockInfo : availableBlocksInfo) {
+            if (!blockInfo.second) { // Si es bloque de datos
+                for (size_t i = 0; i < blockSize; ++i) {
+                    reconstructed[i] ^= blockInfo.first[i];
+                }
+            }
+        }
+    }
+    else {
+        // Caso 2: Falta un bloque de datos - usar paridad + otros datos
+        bool parityFound = false;
+
+        for (const auto& blockInfo : availableBlocksInfo) {
+            if (!blockInfo.second) { // Bloques de datos
+                for (size_t i = 0; i < blockSize; ++i) {
+                    reconstructed[i] ^= blockInfo.first[i];
+                }
+            }
+            else { // Bloque de paridad
+                parityFound = true;
+                for (size_t i = 0; i < blockSize; ++i) {
+                    reconstructed[i] ^= blockInfo.first[i];
+                }
+            }
+        }
+        if (!parityFound) {
+            throw std::runtime_error("Bloque de paridad no encontrado para reconstrucción");
         }
     }
     return reconstructed;
