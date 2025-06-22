@@ -428,6 +428,16 @@ const File* DiskController::findFile(const std::string& fileId) const {
     return nullptr;
 }
 
+const File* DiskController::findFileByName(const std::string& filename) const {
+    std::lock_guard<std::mutex> lock(filesDataMutex);
+    for (const auto& file : registeredFilesData) {
+        if (file.filename == filename) {
+            return &file;
+        }
+    }
+    return nullptr;
+}
+
 void DiskController::loadMetadata() {
     std::ifstream file(dataFilePath);
     if (!file.is_open()) {
@@ -494,52 +504,126 @@ void DiskController::saveMetadata() {
               << std::filesystem::absolute(dataFilePath) << std::endl;
 }
 
-bool DiskController::deleteFile(const std::string& fileId) {
-    // 1. Buscar el archivo en los metadatos
-    const File* file = findFile(fileId);
-    if (!file) return false;
+bool DiskController::deleteFile(const std::string& filename) {
+    std::cout << "[DEBUG] Iniciando eliminación para archivo: " << filename << std::endl;
+    
+    // 1. Bloquear todos los mutex necesarios en orden consistente
+    std::unique_lock<std::mutex> lockData(filesDataMutex, std::defer_lock);
+    std::unique_lock<std::mutex> lockMap(fileMapMutex, std::defer_lock);
+    std::unique_lock<std::mutex> lockFiles(filesMutex, std::defer_lock);
+    std::lock(lockData, lockMap, lockFiles);
+    std::cout << "[DEBUG] Mutex adquiridos de forma segura" << std::endl;
 
-    // 2. Eliminar bloques de los nodos
-    try {
-        std::vector<std::future<bool>> deleteFutures;
-        const std::string& filename = file->filename;
-
-        if (fileBlockMap.find(filename) != fileBlockMap.end()) {
-            const auto& blocks = fileBlockMap[filename];
-            size_t totalStripes = blocks.size() / diskNodeUrls.size();
-
-            for (size_t stripeIdx = 0; stripeIdx < totalStripes; ++stripeIdx) {
-                for (int nodeIdx = 0; nodeIdx < diskNodeUrls.size(); ++nodeIdx) {
-                    bool isParity = blocks[stripeIdx * diskNodeUrls.size() + nodeIdx].second;
-                    std::string blockType = isParity ? "parity_" : "block_";
-                    std::string blockName = blockType + filename + "_stripe_" + std::to_string(stripeIdx);
-
-                    deleteFutures.push_back(std::async(std::launch::async, [this, nodeIdx, blockName]() {
-                        httplib::Client client(diskNodeUrls[nodeIdx]);
-                        auto res = client.Delete(("/delete_block/" + blockName).c_str());
-                        return res && res->status == 200;
-                    }));
-                }
-            }
-
-            // Verificar que todos los borrados fueron exitosos
-            for (auto& future : deleteFutures) {
-                if (!future.get()) return false;
-            }
-
-            // 3. Eliminar de las estructuras internas
-            {
-                std::lock_guard<std::mutex> lockMap(fileMapMutex);
-                std::lock_guard<std::mutex> lockFiles(filesMutex);
-                fileBlockMap.erase(filename);
-                registeredFiles.erase(std::remove(registeredFiles.begin(), registeredFiles.end(), filename), registeredFiles.end());
-            }
-
-            // 4. Eliminar de los metadatos
-            return removeFile(fileId);
+    // 2. Búsqueda del archivo
+    const File* file = nullptr;
+    for (const auto& f : registeredFilesData) {
+        if (f.filename == filename) {
+            file = &f;
+            break;
         }
-    } catch (...) {
+    }
+    
+    if (!file) {
+        std::cerr << "[ERROR] Archivo no encontrado en metadatos: " << filename << std::endl;
         return false;
     }
+    std::cout << "[DEBUG] Archivo encontrado - ID: " << file->id << std::endl;
+
+    // 3. Verificar existencia en fileBlockMap
+    if (fileBlockMap.find(filename) == fileBlockMap.end()) {
+        std::cerr << "[ERROR] Archivo no en fileBlockMap: " << filename << std::endl;
+        return false;
+    }
+
+    // 4. Preparar eliminación RAID
+    const auto& blocks = fileBlockMap[filename];
+    size_t totalStripes = blocks.size() / diskNodeUrls.size();
+    std::cout << "[DEBUG] Total de stripes: " << totalStripes << std::endl;
+
+    // 5. Liberar mutex durante operaciones de red
+    lockData.unlock();
+    lockMap.unlock();
+    lockFiles.unlock();
+    std::cout << "[DEBUG] Mutex liberados para operaciones de red" << std::endl;
+
+    // 6. Eliminación RAID distribuida
+    std::vector<std::future<bool>> deleteFutures;
+    for (size_t stripeIdx = 0; stripeIdx < totalStripes; ++stripeIdx) {
+        for (int nodeIdx = 0; nodeIdx < diskNodeUrls.size(); ++nodeIdx) {
+            bool isParity = blocks[stripeIdx * diskNodeUrls.size() + nodeIdx].second;
+            std::string blockType = isParity ? "parity_" : "block_";
+            std::string blockName = blockType + filename + "_stripe_" + std::to_string(stripeIdx);
+
+            deleteFutures.push_back(std::async(std::launch::async, [this, nodeIdx, blockName]() {
+                try {
+                    httplib::Client client(diskNodeUrls[nodeIdx]);
+                    client.set_connection_timeout(5);
+                    client.set_read_timeout(5);
+                    
+                    std::cout << "[DEBUG] Enviando DELETE para " << blockName 
+                              << " a nodo " << nodeIdx << std::endl;
+                    
+                    std::cout << "[DEBUG RAW] URL completa que se enviará: " 
+                        << diskNodeUrls[nodeIdx] << "/delete_block/" << blockName << std::endl;
+                    auto res = client.Delete(("/delete_block/" + blockName).c_str());
+                    
+                    if (!res) {
+                        std::cerr << "[ERROR] No response from node " << nodeIdx 
+                                  << " for " << blockName << std::endl;
+                        return false;
+                    }
+                    
+                    std::cout << "[DEBUG] Nodo " << nodeIdx << " respondió " 
+                              << res->status << " para " << blockName << std::endl;
+                    return res->status == 200;
+                } catch (const std::exception& e) {
+                    std::cerr << "[EXCEPCION] Error eliminando " << blockName 
+                              << " en nodo " << nodeIdx << ": " << e.what() << std::endl;
+                    return false;
+                }
+            }));
+        }
+    }
+
+    // 7. Verificar resultados de eliminación RAID
+
+
+    bool allDeleted = true;
+    for (auto& future : deleteFutures) {
+        if (!future.get()) {
+            allDeleted = false;
+        }
+    }
+
+    if (!allDeleted) {
+        std::cerr << "[ERROR] Falló la eliminación de algunos bloques" << std::endl;
+        return false;
+    }
+
+    // 8. Re-adquirir mutex para actualizar estructuras
+    std::lock(lockData, lockMap, lockFiles);
+    std::cout << "[DEBUG] Mutex re-adquiridos para actualización" << std::endl;
+
+    // 9. Eliminar de estructuras internas
+    fileBlockMap.erase(filename);
+    registeredFiles.erase(
+        std::remove(registeredFiles.begin(), registeredFiles.end(), filename), 
+        registeredFiles.end()
+    );
+    std::cout << "[DEBUG] Eliminado de estructuras internas: " << filename << std::endl;
+
+    // 10. Eliminar de metadatos
+    auto it = std::remove_if(registeredFilesData.begin(), registeredFilesData.end(),
+        [&file](const File& f) { return f.id == file->id; });
+    
+    if (it != registeredFilesData.end()) {
+        registeredFilesData.erase(it, registeredFilesData.end());
+        std::cout << "[DEBUG] Archivo eliminado exitosamente: " << filename << std::endl;
+        return true;
+    }
+
+    std::cerr << "[ERROR] No se pudo eliminar de registeredFilesData" << std::endl;
     return false;
 }
+
+

@@ -116,9 +116,36 @@ void InterfaceGui::update() {
         std::lock_guard<std::mutex> lock(fileListMutex);
         for (const auto& file : fileList) {
             ImGui::Text("%s", file.c_str());
+            //boton descargar
             ImGui::SameLine();
             if (ImGui::Button(("Descargar##" + file).c_str(), ImVec2(80, 0)) && !operationInProgress) {
                 asyncDownloadFile(file);
+            }
+            // Botón de eliminar (nuevo)
+            ImGui::SameLine();
+            if (ImGui::Button(("Eliminar##" + file).c_str(), ImVec2(80, 0))) {
+                if (!operationInProgress) {
+                    // Confirmación antes de eliminar
+                    ImGui::OpenPopup(("Confirmar##" + file).c_str());
+                }
+            }
+            // Popup de confirmación
+            if (ImGui::BeginPopupModal(("Confirmar##" + file).c_str(), nullptr, 
+                                    ImGuiWindowFlags_AlwaysAutoResize)) {
+                ImGui::Text("¿Eliminar %s permanentemente?", file.c_str());
+                ImGui::Separator();
+                
+                if (ImGui::Button("Sí", ImVec2(120, 0))) {
+                    asyncDeleteFile(file);
+                    ImGui::CloseCurrentPopup();
+                }
+                
+                ImGui::SameLine();
+                if (ImGui::Button("Cancelar", ImVec2(120, 0))) {
+                    ImGui::CloseCurrentPopup();
+                }
+                
+                ImGui::EndPopup();
             }
         }
     }
@@ -221,6 +248,31 @@ void InterfaceGui::asyncDownloadFile(const std::string& filename) {
             successMessage.clear();
         }
         operationInProgress = false; // Marcar operación como finalizada
+    });
+}
+
+void InterfaceGui::asyncDeleteFile(const std::string& filename) {
+    if (operationInProgress) return;
+
+    operationInProgress = true;
+    currentOperationName = "Eliminando " + filename;
+    currentOperation = std::async(std::launch::async, [this, filename]() {
+        try {
+            bool deleted = diskController.deleteFile(filename);
+            if (deleted) {
+                diskController.saveMetadata();
+                // Actualizar la lista de archivos
+                auto files = diskController.listAvailableFiles();
+                std::lock_guard<std::mutex> lock(fileListMutex);
+                fileList = std::move(files);
+                successMessage = "Archivo eliminado: " + filename;
+            } else {
+                errorMessage = "No se pudo eliminar: " + filename;
+            }
+        } catch (const std::exception& e) {
+            errorMessage = "Error al eliminar: " + std::string(e.what());
+        }
+        operationInProgress = false;
     });
 }
 

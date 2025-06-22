@@ -36,6 +36,7 @@ private:
     void asyncDownloadFile(const std::string& filename);
     void displayNodeStatus();       // Muestra estado de los nodos del RAID
     void showOperationStatus();
+    void asyncDeleteFile(const std::string& filename);
 
     //Variables de estado
     GLFWwindow* window = nullptr;                   // Ventana principal
