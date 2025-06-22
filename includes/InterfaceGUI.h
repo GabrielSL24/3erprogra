@@ -6,7 +6,7 @@
 #include <vector>
 #include <string>
 #include <filesystem>
-#include <tinyfiledialogs.h>   // Para dialogos de archivo del sistema
+#include <tinyfiledialogs/tinyfiledialogs.h>   // Para dialogos de archivo del sistema
 #include <atomic>               // Para operaciones thread-safe
 #include <future>               // Para operaciones asíncronas
 #include <mutex>                // Para exclusion mutua (thread safety)
@@ -36,6 +36,7 @@ private:
     void asyncDownloadFile(const std::string& filename);
     void displayNodeStatus();       // Muestra estado de los nodos del RAID
     void showOperationStatus();
+    void asyncDeleteFile(const std::string& filename);
 
     //Variables de estado
     GLFWwindow* window = nullptr;                   // Ventana principal

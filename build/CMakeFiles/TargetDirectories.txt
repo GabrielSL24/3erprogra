@@ -1,0 +1,3 @@
+C:/Users/luisc/Documents/GitHub/3erprogra/build/CMakeFiles/tecmfs_client.dir
+C:/Users/luisc/Documents/GitHub/3erprogra/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/luisc/Documents/GitHub/3erprogra/build/CMakeFiles/ZERO_CHECK.dir

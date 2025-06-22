@@ -103,9 +103,10 @@ def status():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
-@app.route('/delete_block/<block_name>', methods=['DELETE'])
+@app.route('/delete_block/<path:block_name>', methods=['DELETE'])
 def delete_block(block_name):
     try:
+        print(f"[NODE DEBUG] Petición DELETE recibida. Valor crudo de block_name: {block_name}")
         filename = f"{block_name}.bin"
         filepath = os.path.join(app.disk_node.storage_path, filename)
         

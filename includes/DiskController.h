@@ -52,10 +52,16 @@ public:
     static void receiveXML(const httplib::Request& req, httplib::Response& res);//Recibe config XML de los Disknodes
 
     void registerFile(const File& file);
-    bool removeFile(const std::string& fileId);
+    bool removeFile(const std::string& filename);
     bool deleteFile(const std::string& fileId);
     const std::vector<File>& getFiles() const;
     const File* findFile(const std::string& fileId) const;
+    const File* findFileByName(const std::string& filename) const;
+
+    bool deleteSingleBlock(const std::string& nodeUrl, const std::string& fullBlockId);
+
+    void loadMetadata();
+    void saveMetadata();
 
 private:
     int connect_S();
@@ -92,6 +98,5 @@ private:
     mutable std::mutex filesDataMutex;
     std::string dataFilePath = "files.json";
 
-    void loadMetadata();
-    void saveMetadata();
+    
 };
