@@ -66,6 +66,9 @@ private:
     static std::vector<char> base64_decode(const std::string& encoded);
     int getParityPositionForStripe(size_t stripeIndex) const;
 
+    std::vector<char> attemptAlternativeRecovery(
+        const std::vector<std::pair<std::vector<char>, bool>>& availableBlocks,
+        size_t stripeIndex);
 
     // Variables
     httplib::Server server;  // Mover el servidor como miembro de clase

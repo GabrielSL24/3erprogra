@@ -12,8 +12,11 @@ class DiskNode:
         self.port = port
         self.block_size = block_size
         self.total_blocks = total_blocks
-        self.used_blocks = 0
         os.makedirs(storage_path, exist_ok=True)
+        # Inicializar contador con archivos existentes
+        bin_files = [f for f in os.listdir(storage_path) 
+                if f.endswith('.bin') and os.path.isfile(os.path.join(storage_path, f))]
+        self.used_blocks = len(bin_files)
 
     def validate_block_size(self, data):
         if len(data) > self.block_size:
@@ -37,15 +40,23 @@ def write_block():
             block_data = base64.b64decode(block_data)
         elif isinstance(block_data, list):
             block_data = bytes(block_data)
+
+        # Validar tamaño del bloque
+        if len(block_data) > app.disk_node.block_size:
+            raise ValueError(f"Tamaño de bloque excede el maximo de {app.disk_node.block_size} bytes")
         
         # Crear archivo
         filename = f"{block_id}.bin"
         filepath = os.path.join(app.disk_node.storage_path, filename)
-        
+        block_existed = os.path.exists(filepath)
+
+        # Escribir bloque
         with open(filepath, 'wb') as f:
             f.write(block_data)
         
-        app.disk_node.used_blocks += 1
+        if not block_existed:
+            app.disk_node.used_blocks += 1
+
         return jsonify({"status": "success", "block_id": block_id})
     
     except Exception as e:
