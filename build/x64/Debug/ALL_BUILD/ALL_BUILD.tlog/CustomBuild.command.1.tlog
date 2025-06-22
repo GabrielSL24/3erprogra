@@ -1,6 +1,6 @@
-^C:\USERS\LUISC\DOCUMENTS\GITHUB\3ERPROGRA\CMAKELISTS.TXT
+^C:\USERS\SOTOL\ONEDRIVE - ESTUDIANTES ITCR\TAREAS TEC\TERCER SEMESTRE\DATOS II\3ERPROGRA\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/luisc/Documents/GitHub/3erprogra -BC:/Users/luisc/Documents/GitHub/3erprogra/build --check-stamp-file C:/Users/luisc/Documents/GitHub/3erprogra/build/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra" "-BC:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build" --check-stamp-file "C:/Users/sotol/OneDrive - Estudiantes ITCR/Tareas TEC/Tercer semestre/Datos II/3erprogra/build/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
